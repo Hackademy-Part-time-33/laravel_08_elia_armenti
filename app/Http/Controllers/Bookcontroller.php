@@ -8,6 +8,14 @@ use App\Models\Book;
 
 class Bookcontroller extends Controller
 {
+
+    public function __construct()
+    {
+        return [
+            'auth'
+        ];
+    }
+
     public function show(Book $book) {
         return view ('books.show', compact('book'));
         
@@ -28,8 +36,8 @@ class Bookcontroller extends Controller
         
 
         if ($request->hasFile(('image'))) {
-            $file_name = $request->file('image');
-            $path_image = $request->file('image')->storeAs('public/images', $file_name);
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('public\images', $file_name);
         }
        /*  dd($image_extension, $image_name); */
 
@@ -42,4 +50,6 @@ class Bookcontroller extends Controller
         session()->flash('success', 'Libro creato con successo');
         return redirect()->route('book.index');
     }
+
+
 }

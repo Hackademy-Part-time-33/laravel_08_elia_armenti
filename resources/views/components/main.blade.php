@@ -28,11 +28,18 @@
                     </a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Registrati</a>
-                    <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Entra</a>
-                    <span>Benvenuto</span>
-                    <a class="btn btn-sm btn-outline-secondary mx-2" href="#">Logout</a>
-                </div>
+                    @guest
+                    <a class="btn btn-sm btn-outline-secondary mx-2" href="{{route('register')}}">Registrati</a>
+                    <a class="btn btn-sm btn-outline-secondary mx-2" href="{{route('login')}}">Entra</a>  
+                    @endguest
+                    @auth
+                    <span>Benvenuto {{Auth::user()->name}}</span>
+                    <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button class="btn btn-sm btn-outline-secondary mx-2" type="submit">Logout</button>
+                </form> 
+                    @endauth
+                    </div>
             </div>
         </header>
 
