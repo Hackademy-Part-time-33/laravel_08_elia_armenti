@@ -6,21 +6,15 @@
                 <div class="col-md-12">
                     <div>
                         <h1 class="pb-4 mb-4 fst-italic ">
-                            {{$book->title}}
+                            {{$author->name}} {{$author->surname}}
                         </h1>
                     </div>
                     
                     <div>
                         <ul>
-                            <li>
-                                <p>Numero pagine: {{$book->pages ?? 'non definito'}}</p>
-                            </li>
-                            <li>
-                                <p>Anno di pubblicazione: {{$book->year ?? 'anno ignoto'}}</p>
-                            </li>
-                            <li>
-                                <p>Autore: {{$book->author->name . ' ' . $book->author->surname}}</p>
-                            </li>
+                            @foreach ($author->book as $book)
+                                <li>{{ $book->title}}</li>
+                            @endforeach
                         </ul>   
                     </div>
                     

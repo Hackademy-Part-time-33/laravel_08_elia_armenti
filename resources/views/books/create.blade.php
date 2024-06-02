@@ -26,6 +26,14 @@
         @error('year')
         {{$message}}
         @enderror
+        
+        <select name="author_id" class="form-control">
+            @foreach ($authors as $author)
+            <option value="{{author_id}}">{{$author->name . ' ' . $author->surname}}</option> 
+            @endforeach
+            
+        </select>
+        
         <div class="form-floating mb-3">
             <input class="form-control" id="image"
             name="image"

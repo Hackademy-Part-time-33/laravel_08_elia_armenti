@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function() {
     
     Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
     
-    
+    Route::get('/authors/{book}', [BookController::class, 'show'])->name('authors.show');
 });
 
 
